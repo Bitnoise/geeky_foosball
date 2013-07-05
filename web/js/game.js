@@ -12,7 +12,7 @@
 
         $('#goal').on('click', function(event) {
             socket.emit('goal', {
-                'name': 'Michał'
+                'name': $('section#player').data('username')
             });
         });
     })

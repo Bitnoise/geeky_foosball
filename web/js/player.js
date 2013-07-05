@@ -25,8 +25,8 @@
 
             //redirect
             if (data.redirect) {
-                // window.location = 'game/' + me;
-                window.location = 'game';
+                window.location = 'game/' + me;
+                // window.location = 'game';
             };
         });
 
