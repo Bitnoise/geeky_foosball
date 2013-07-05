@@ -3,22 +3,22 @@ block content
   .row
     .twelve.center.columns
         .row
-          .six.columns.player.first-team Player 1
-          .six.columns.player.second-team Player 2
+          .six.columns.player Player 1
+          .six.columns.player Player 2
         .row
           .twelve.columns
             .result
-              span.first-team 1
+              span.firstTeam 0
               | :
-              span.second-team 2
+              span.secondTeam 0
+        //- .row
+        //-   .twelve.columns
+        //-     .result.disabled
+        //-       p connected 3 of 4.. waiting for players
+        //-       span.first-team 0
+        //-       | :
+        //-       span.second-team 0
         .row
-          .twelve.columns
-            .result.disabled
-              p connected 3 of 4.. waiting for players
-              span.first-team 0
-              | :
-              span.second-team 0
-        .row
-          .six.columns.player.first-team Three
-          .six.columns.player.second-team Four
+          .six.columns.player Three
+          .six.columns.player Four
   script(src='/js/judge.js')
