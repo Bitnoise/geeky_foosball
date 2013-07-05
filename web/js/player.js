@@ -14,14 +14,16 @@
 
         //update list
         socket.on('update_teams', function(data) {
-            console.log(data);
             _.each(data.teams, function(team, teamName) {
-
                 _.each(team.players, function(player) {
                     $('ul.players').find('li:contains(' + player + ')').appendTo(teams[teamName]);
                 });
             });
-            //update view
+
+            //redirect
+            if (data.redirect) {
+                window.location = 'game';
+            };
         });
 
         //drag and drop players
