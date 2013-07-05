@@ -52,8 +52,8 @@ var io = require('socket.io').listen(socketServer);
             if(!_.isUndefined(teams[data.team])) {
                 //add user to the team
                 console.log(_.indexOf(teams[data.team], data.name));
-                if (_.indexOf(teams[data.team], data.name) === -1) {
-                    teams[data.team].push(data.name);
+                if (_.indexOf(teams[data.team].players, data.name) === -1) {
+                    teams[data.team].players.push(data.name);
                 }
             }
             // console.log('emituje update_teams');
