@@ -8,14 +8,17 @@ function routes(app, io) {
 	});
 
 	app.get('/players', function(req, res) {
-		var clientsNo = [
-		    'player1',
-		    'player2',
-		    'player3',
-		    'player4'
+		var players = [
+		    'Łukasz' ,
+		    'Michał' ,
+            'Benedykt' ,
+            'Krzysztof' ,
+            'Paweł' ,
+            'Adrian'
 		];
 
-	  res.render('players', {});
+	  res.render('players', { players: players });
+
 	  io.sockets.on('connection', function (socket) {
 	    // console.log(socket);
 	    socket.emit('players', { players: clientsNo });
