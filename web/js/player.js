@@ -1,5 +1,5 @@
 (function($){
     $('ul.players li').on('click', function(event) {
-        console.log(this.html());
+        console.log($(this).html());
     });
 })(jQuery)
