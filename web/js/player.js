@@ -1,5 +1,4 @@
 (function($){
-<<<<<<< HEAD
     $(document).ready(function() {
 
         $( "ul.players, ul.player-placeholder" ).sortable({
@@ -19,12 +18,4 @@
             // socket.emit('choose_player', { my: $(this).html() });
         });
     })
-=======
-    $('ul.players li').on('click', function(event) {
-        var socket = io.connect('http://localhost:1337');
-        socket.emit('choose_player', { player: $(this).html() });
-        // console.log($(this).html());
-        // $(this).css({'background-color': 'red'});
-    });
->>>>>>> fffc674bb8ddddd6fc1220477e65739655d666ff
 })(jQuery)
