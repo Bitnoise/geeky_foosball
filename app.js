@@ -55,10 +55,14 @@ var io = require('socket.io').listen(socketServer);
     io.sockets.on('connection', function (socket) {
         socket.on('choose_player', function (data) {
             if(!_.isUndefined(teams[data.team])) {
-                teams.firstTeam.push(data.name);
+                //add user to the team
+                console.log(_.indexOf(teams[data.team], data.name));
+                if (_.indexOf(teams[data.team].players, data.name) === -1) {
+                    teams[data.team].players.push(data.name);
+                }
             }
             // console.log('emituje update_teams');
-            io.sockets.emit('update_teams', { teams: teams });
+            io.sockets.emit('update_teams', { teams: teams, redirect: (teams.firstTeam.players.length == 2 && teams.secondTeam.players.length == 2) ? true : false });
         });
 
         socket.on('goal', function(data){
