@@ -9,13 +9,14 @@
         var secondTeam = $('#second-team');
         var players    = $('#players');
 
+        var socket = io.connect('http://localhost:1337');
+
         $( "ul.players, ul.player-placeholder" ).sortable({
           connectWith: "ul.player-placeholder, ul.players",
           receive: function( event, ui ) {
             var name = $(this).children('li').html();
             var team = $(this).parent().children("ul").attr('id');
 
-            var socket = io.connect('http://localhost:1337');
             socket.emit('choose_player', { 'name': name, 'team': team });
           }
         }).disableSelection();
