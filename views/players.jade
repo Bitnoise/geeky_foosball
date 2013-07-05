@@ -13,12 +13,8 @@ block content
                 li
             .four.columns.players
               ul.players
-                li Łukasz
-                li Michał
-                li Benedykt
-                li Krzysztof
-                li Paweł
-                li Adrian
+                each player in players
+                  li= player
             .four.columns.second-team
               h5.second-team Second team
               ul.player-placeholder
