@@ -1,3 +1,18 @@
+/* mociek */
+var teams  = {
+    'firstTeam': [],
+    'secondTeam': []
+};
+
+var players = [
+    'Łukasz',
+    'Michał',
+    'Benedykt',
+    'Krzysztof',
+    'Paweł',
+    'Adrian'
+];
+
 /* little helpers */
 var _ = require('underscore');
 
@@ -32,9 +47,22 @@ var socketServer = require('http').createServer(app);
 
 /* socket.io stuff */
 var io = require('socket.io').listen(socketServer);
+    io.sockets.on('connection', function (socket) {
+        socket.on('choose_player', function (data) {
+            if(!_.isUndefined(teams[data.team])) {
+                teams.firstTeam.push(data.name);
+            }
+            // console.log('emituje update_teams');
+            io.sockets.emit('update_teams', { teams: teams });
+        });
+    });
+
+
 
 /* require routing and views */
-var routing = require('./routing')(app, io, _);
+var routing = require('./routing')(app, io, _, players);
 
 /* start listening */
 socketServer.listen(1337);
+
+

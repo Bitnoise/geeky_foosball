@@ -16,7 +16,7 @@
             firstTeam: $('ul#firstTeam'),
             secondTeam: $('ul#secondTeam')
         }
-        console.log('slucham')
+
         //update list
         socket.on('update_teams', function(data) {
             console.log(data);
