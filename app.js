@@ -1,7 +1,7 @@
 /* mociek */
 var teams  = {
-    'firstTeam': [],
-    'secondTeam': []
+    'firstTeam': {players: [], score: 0},
+    'secondTeam': {players: [], score: 0}
 };
 
 var players = [
