@@ -7,7 +7,7 @@ function routes(app, io) {
 	  res.render('judge', {});
 	});
 
-	app.get('/player', function(req, res) {
+	app.get('/players', function(req, res) {
 		var clientsNo = [
 		    'player1',
 		    'player2',
@@ -15,7 +15,7 @@ function routes(app, io) {
 		    'player4'
 		];
 
-	  res.send('Your Awesome.');
+	  res.render('players', {});
 	  io.sockets.on('connection', function (socket) {
 	    // console.log(socket);
 	    socket.emit('players', { players: clientsNo });
