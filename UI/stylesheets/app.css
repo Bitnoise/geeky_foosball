@@ -1,0 +1,12 @@
+/* Artfully masterminded by ZURB  */
+/* line 14, ../sass/app.scss */
+.center {
+  text-align: center;
+}
+
+/* line 18, ../sass/app.scss */
+.huge {
+  width: 100%;
+  padding: 1em 0;
+  font-size: 60px;
+}
