@@ -6,8 +6,6 @@
     }
 
     $(document).ready(function() {
-
-
         var players    = $('#players');
 
         var socket = io.connect('http://localhost:1337');
