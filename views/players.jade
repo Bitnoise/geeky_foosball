@@ -4,6 +4,8 @@ block content
       .twelve.center.columns
           .row
             h3 Select player
+            p
+              a(href='#').nice.radius.small.blue.button.expand#random Random
             hr
           .row
             .four.columns.first-team
@@ -11,7 +13,7 @@ block content
               ul.players#firstTeam
             .four.columns.players
               h5 All Players
-              ul.players
+              ul.players#players
                 each player in players
                   li= player
             .four.columns.second-team
