@@ -1,0 +1,10 @@
+{
+  "name": "GeekyFoosball",
+  "description": "Bitnoise foosball app which will drive you crazy",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "3.x",
+    "jade" : "0.32.x"
+  }
+}
