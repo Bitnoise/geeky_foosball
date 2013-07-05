@@ -1,4 +1,4 @@
-function routes(app, io) {
+function routes(app, io, _) {
 	app.get('/', function (req, res) {
 	  res.render('index', {});
 	});
@@ -18,19 +18,20 @@ function routes(app, io) {
 		];
 
 	  	io.sockets.on('connection', function (socket) {
+	  		/* run session per socket if not exists */
+	  		req.session[socket.id] =
+	  			(!_.isObject(req.session[socket.id])) ? {} : req.session[socket.id];
 
 	  	  	socket.on('choose_player', function (data) {
-	  	  	  	if(!req.session.player) {
-  					// req.session.player = data;
+	  	  	  	if(_.isUndefined(req.session[socket.id].player)) {
+  					req.session[socket.id] = { player : data }
   				} else {
   					players = [];
   				}
-  				//simple check
-	  	  	  	console.log(req.session.player);
+	  	  	  	console.log(req.session[socket.id].player);
 	  	  	});
 	  	});
 
-	  	//render view
 	  	res.render('players', { players: players });
 	});
 
