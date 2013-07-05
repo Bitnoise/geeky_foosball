@@ -15,7 +15,7 @@ var clientsNo = new Array(
     'player4');
 
 app.get('/player', function(req, res) {
-  res.send('Your Awesome.');
+  // res.send('Your Awesome.');
   io.sockets.on('connection', function (socket) {
     // console.log(socket);
     socket.emit('players', { players: clientsNo });
