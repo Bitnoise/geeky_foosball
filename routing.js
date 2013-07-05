@@ -11,10 +11,10 @@ function routes(app, io, _, matchInfo) {
 	  	res.render('players', { players: matchInfo.players });
 	});
 
-	app.get('/game', function(req, res) {
-	  	res.render('game');
+	app.get('/game/:username', function(req, res) {
+	  	res.render('game', { player: req.params['username']});
 	});
-	
+
 	return {};
 }
 
