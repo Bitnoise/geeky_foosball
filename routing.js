@@ -1,4 +1,4 @@
-function routes(app, io, _, players) {
+function routes(app, io, _, matchInfo) {
 	app.get('/', function (req, res) {
 	  res.render('index');
 	});
@@ -8,14 +8,13 @@ function routes(app, io, _, players) {
 	});
 
 	app.get('/players', function(req, res) {
-
-	  	res.render('players', { players: players });
+	  	res.render('players', { players: matchInfo.players });
 	});
 
 	app.get('/game', function(req, res) {
-
 	  	res.render('game');
 	});
+	
 	return {};
 }
 

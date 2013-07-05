@@ -13,6 +13,11 @@ var players = [
     'Adrian'
 ];
 
+var matchInfo = {
+	players : players,
+	teams : teams
+};
+
 /* little helpers */
 var _ = require('underscore');
 
@@ -55,14 +60,24 @@ var io = require('socket.io').listen(socketServer);
             // console.log('emituje update_teams');
             io.sockets.emit('update_teams', { teams: teams });
         });
+
+        socket.on('goal', function(data){
+        	teams.every(function(team){
+        		if(team.players.indexOf(data.name) !== -1) {
+        			team.score += 1;
+        		}
+
+        		return true;
+        	});
+        	
+        	io.sockets.emit('scoreChanged', teams);
+        });
     });
 
 
 
 /* require routing and views */
-var routing = require('./routing')(app, io, _, players);
+var routing = require('./routing')(app, io, _, matchInfo);
 
 /* start listening */
 socketServer.listen(1337);
-
-
