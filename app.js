@@ -57,7 +57,7 @@ var io = require('socket.io').listen(socketServer);
                 }
             }
             // console.log('emituje update_teams');
-            io.sockets.emit('update_teams', { teams: teams });
+            io.sockets.emit('update_teams', { teams: teams, counter: (teams.firstTeam.players.length + teams.secondTeam.players.length) });
         });
     });
 
