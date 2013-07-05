@@ -1,4 +1,3 @@
-
 (function($){
     function shuffle(o){ //v1.0
         for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
@@ -6,22 +5,20 @@
     }
 
     $(document).ready(function() {
-        var players    = $('#players');
-
-        var socket = io.connect('http://localhost:1337');
-
-        var teams = {
-            firstTeam: $('ul#firstTeam'),
-            secondTeam: $('ul#secondTeam')
-        }
+        var players     = $('#players')
+            , socket    = io.connect('http://localhost:1337')
+            , teams     = {
+                firstTeam: $('ul#firstTeam'),
+                secondTeam: $('ul#secondTeam')
+            };
 
         //update list
         socket.on('update_teams', function(data) {
             console.log(data);
-            _.each(data.teams, function(players, team) {
+            _.each(data.teams, function(team, teamName) {
 
-                _.each(players, function(player) {
-                    $('ul.players').find('li:contains(' + player + ')').appendTo(teams[team]);
+                _.each(team.players, function(player) {
+                    $('ul.players').find('li:contains(' + player + ')').appendTo(teams[teamName]);
                 });
             });
             //update view
@@ -31,7 +28,7 @@
         $( "ul.players, ul.player-placeholder" ).sortable({
           connectWith: "ul.player-placeholder, ul.players",
           receive: function( event, ui ) {
-            var name = $(this).children('li').html();
+            var name = ui.item.html();
             var team = $(this).parent().children("ul").attr('id');
 
             socket.emit('choose_player', { 'name': name, 'team': team });
