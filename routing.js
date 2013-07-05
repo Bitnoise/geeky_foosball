@@ -22,11 +22,12 @@ function routes(app, io, _) {
 	];
 
 	app.get('/players', function(req, res) {
-
+        var dupa = 0;
 	  	io.sockets.on('connection', function (socket) {
+            console.log(dupa++);
 	  		/* run session per socket if not exists */
-	  		req.session[socket.id] =
-	  			(!_.isObject(req.session[socket.id])) ? {} : req.session[socket.id];
+	  		// req.session[socket.id] =
+	  			// (!_.isObject(req.session[socket.id])) ? {} : req.session[socket.id];
 
 	  	  	socket.on('choose_player', function (data) {
 	  	  // 	  	if(_.isUndefined(req.session[socket.id].player)) {
@@ -41,6 +42,8 @@ function routes(app, io, _) {
 
 	  	  	  	socket.emit('update_teams', { teams: teams });
 	  	  	});
+
+
 	  	});
 
 	  	res.render('players', { players: players });
