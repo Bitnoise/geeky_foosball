@@ -1,0 +1,21 @@
+extend layout
+block content
+  .row
+    .twelve.columns.game
+        .row
+          p
+            a.nice.radius.huge.blue.button.expand(href='#')#goal MY GOAL
+        .row
+          .six.columns.player.first-team Player 1
+          .six.columns.player.second-team Player 2
+        .row
+          .twelve.center.columns
+            .result
+              span.first-team 1
+              | :
+              span.second-team 2
+        .row
+          .six.columns.player.first-team Three
+          .six.columns.player.second-team Four
+  script(src='http://localhost:1337/socket.io/lib/socket.io.js')
+  script(src='/js/player.js')
