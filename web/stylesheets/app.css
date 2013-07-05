@@ -45,21 +45,23 @@
 /* line 53, ../sass/app.scss */
 .first-team {
   color: #0394ff;
+  text-align: left;
 }
 
-/* line 57, ../sass/app.scss */
+/* line 58, ../sass/app.scss */
 .second-team {
   color: #be2c32;
+  text-align: right;
 }
 
-/* line 62, ../sass/app.scss */
+/* line 64, ../sass/app.scss */
 ul.player-placeholder li {
   width: 100%;
   height: 50px;
   border: dashed 1px #666;
 }
 
-/* line 69, ../sass/app.scss */
+/* line 71, ../sass/app.scss */
 ul.players li {
   height: 40px;
   line-height: 40px;
@@ -68,4 +70,15 @@ ul.players li {
   color: #666;
   font-size: 18px;
   cursor: pointer;
+}
+
+/* line 83, ../sass/app.scss */
+.game .player {
+  font-size: 16px;
+}
+/* line 86, ../sass/app.scss */
+.game .result {
+  font-size: 40px;
+  font-weight: normal;
+  padding: 15px 0;
 }
