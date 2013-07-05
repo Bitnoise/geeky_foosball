@@ -4,9 +4,10 @@
         var secondTeam = $('#secondTeam');
         var socket    = io.connect('http://localhost:1337');
 
-        socket.on('scoreChange', function (data) {
-            firstTeam.html(data.firstTeam);
-            secondTeam.html(data.secondTeam);
+        socket.on('scoreChanged', function (data) {
+            console.log(data);
+            firstTeam.html(data.firstTeam.score);
+            secondTeam.html(data.secondTeam.score);
         });
 
         $('#goal').on('click', function(event) {

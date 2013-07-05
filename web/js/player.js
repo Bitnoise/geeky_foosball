@@ -5,6 +5,9 @@
     }
 
     $(document).ready(function() {
+
+        var me          = '';
+
         var players     = $('#players')
             , socket    = io.connect('http://localhost:1337')
             , teams     = {
@@ -22,6 +25,7 @@
 
             //redirect
             if (data.redirect) {
+                // window.location = 'game/' + me;
                 window.location = 'game';
             };
         });
@@ -32,7 +36,7 @@
           receive: function( event, ui ) {
             var name = ui.item.html();
             var team = $(this).parent().children("ul").attr('id');
-
+            me = name;
             socket.emit('choose_player', { 'name': name, 'team': team });
           }
         }).disableSelection();
