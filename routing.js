@@ -22,13 +22,14 @@ function routes(app, io) {
 	  	io.sockets.on('connection', function (socket) {
 
 	  	  	socket.on('choose_player', function (data) {
-	  	  	  	// console.log(data);
-	  	  // 	  	if(!req.session.player) {
-  				// 	// res.write('Last page was: ' + req.session.lastPage + '. ');
-  				// 	req.session.player = data;
-  				// } else {
-  				// 	players = [];
-  				// }
+	  	  	  	if(!req.session.player) {
+  					// res.write('Last page was: ' + req.session.lastPage + '. ');
+  					req.session.player = data;
+  				} else {
+  					players = [];
+  				}
+  				//simple check
+	  	  	  	console.log(req.session.player);
 	  	  	});
 	  	});
 
