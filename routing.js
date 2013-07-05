@@ -17,15 +17,23 @@ function routes(app, io) {
             'Adrian'
 		];
 
-	  res.render('players', { players: players });
+		// req.session.player = false;
 
-	  io.sockets.on('connection', function (socket) {
-	    // console.log(socket);
-	    socket.emit('players', { players: clientsNo });
-	    // socket.on('my other event', function (data) {
-	    //   console.log(data);
-	    // });
-	  });
+	  	io.sockets.on('connection', function (socket) {
+
+	  	  	socket.on('choose_player', function (data) {
+	  	  	  	// console.log(data);
+	  	  // 	  	if(!req.session.player) {
+  				// 	// res.write('Last page was: ' + req.session.lastPage + '. ');
+  				// 	req.session.player = data;
+  				// } else {
+  				// 	players = [];
+  				// }
+	  	  	});
+	  	});
+
+	  	//render view
+	  	res.render('players', { players: players });
 	});
 
 	return {};

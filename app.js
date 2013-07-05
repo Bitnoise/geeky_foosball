@@ -10,6 +10,9 @@ var socketServer = require('http').createServer(app);
 /* socket.io stuff */
 var io = require('socket.io').listen(socketServer);
 
+/* get redis storage */
+var redis = require('connect-redis')(express);
+
 /* require routing and views */
 var routing = require('./routing')(app, io);
 
@@ -22,7 +25,13 @@ app.use(express.static(__dirname + '/web/'));
 
 /* use session stuff */
 app.use(express.cookieParser());
-app.use(express.session({secret: '1234567890QWERTY'}));
+app.use(express.session({
+    store: new redis({
+    host: 'localhost',
+    port: 1337,
+    db: 2,
+    pass: 'RedisPASS'
+  }),secret: '1234567890QWERTY'}));
 
 /* start listening */
 socketServer.listen(1337);
