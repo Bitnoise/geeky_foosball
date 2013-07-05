@@ -17,14 +17,11 @@ function routes(app, io) {
             'Adrian'
 		];
 
-		// req.session.player = false;
-
 	  	io.sockets.on('connection', function (socket) {
 
 	  	  	socket.on('choose_player', function (data) {
 	  	  	  	if(!req.session.player) {
-  					// res.write('Last page was: ' + req.session.lastPage + '. ');
-  					req.session.player = data;
+  					// req.session.player = data;
   				} else {
   					players = [];
   				}
