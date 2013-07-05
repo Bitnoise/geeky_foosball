@@ -1,0 +1,53 @@
+/* Artfully masterminded by ZURB  */
+/* line 17, ../sass/app.scss */
+.center {
+  text-align: center;
+}
+
+/* line 21, ../sass/app.scss */
+.huge {
+  width: 100%;
+  padding: 1em 0;
+  font-size: 60px;
+}
+
+/* line 27, ../sass/app.scss */
+.player {
+  font-size: 2em;
+}
+
+/* line 31, ../sass/app.scss */
+.result {
+  font-size: 120px;
+  font-weight: bold;
+  padding: 45px 0;
+  position: relative;
+}
+/* line 36, ../sass/app.scss */
+.result.disabled {
+  color: #ccc;
+}
+/* line 39, ../sass/app.scss */
+.result.disabled .first-team,
+.result.disabled .second-team {
+  color: #ccc;
+}
+/* line 43, ../sass/app.scss */
+.result p {
+  position: absolute;
+  color: #000;
+  z-index: 9999;
+  width: 300px;
+  left: 50%;
+  margin-left: -150px;
+}
+
+/* line 53, ../sass/app.scss */
+.first-team {
+  color: #0394ff;
+}
+
+/* line 57, ../sass/app.scss */
+.second-team {
+  color: #be2c32;
+}
