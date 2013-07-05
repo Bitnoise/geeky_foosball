@@ -2,6 +2,10 @@
   "name": "geeky_foosball",
   "version": "0.0.0",
   "dependencies": {
-    "jquery": "~2.0.3"
+    "jquery": "~1.9.1",
+    "jquery.ui.core": "https://raw.github.com/jquery/jquery-ui/master/ui/jquery.ui.core.js",
+    "jquery.ui.mouse": "https://raw.github.com/jquery/jquery-ui/master/ui/jquery.ui.mouse.js",
+    "jquery.ui.widget": "https://raw.github.com/jquery/jquery-ui/master/ui/jquery.ui.widget.js",
+    "jquery.ui.sortable": "https://raw.github.com/jquery/jquery-ui/master/ui/jquery.ui.sortable.js"
   }
 }
