@@ -28,15 +28,21 @@
         });
 
         $('#random').on('click', function (event) {
-            var arr   = shuffle(players.find('li')); //shuffle players
-
             //reset all selected players
             firstTeam.find('li').appendTo(players);
             secondTeam.find('li').appendTo(players);
 
+            var arr   = shuffle(players.find('li')); //shuffle players
+            var team = null;
             for (var i=0; i<4; i++)
             {
-                (i%2 ? firstTeam.append(arr[i]) : secondTeam.append(arr[i]));
+                team = (i%2 ? firstTeam : secondTeam);
+
+                team.append(arr[i]);
+                socket.emit('choose_player', {
+                    'name': $(arr[i]).html(),
+                    'team': team.attr('id')
+                });
             }
 
             return false;
