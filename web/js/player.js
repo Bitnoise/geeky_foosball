@@ -43,8 +43,8 @@
 
         $('#random').on('click', function (event) {
             //reset all selected players
-            firstTeam.find('li').appendTo(players);
-            secondTeam.find('li').appendTo(players);
+            teams.firstTeam.find('li').appendTo(players);
+            teams.secondTeam.find('li').appendTo(players);
 
             var arr   = shuffle(players.find('li')); //shuffle players
             var team = null;
@@ -53,6 +53,7 @@
                 team = (i%2 ? teams.firstTeam : teams.secondTeam);
 
                 team.append(arr[i]);
+                // console.log(team);
                 socket.emit('choose_player', {
                     'name': $(arr[i]).html(),
                     'team': team.attr('id')
