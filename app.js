@@ -61,17 +61,20 @@ var io = require('socket.io').listen(socketServer);
                     teams[data.team].players.push(data.name);
                 }
             }
-            // console.log('emituje update_teams');
-            io.sockets.emit('update_teams', { teams: teams, redirect: (teams.firstTeam.players.length == 2 && teams.secondTeam.players.length == 2) ? true : false });
-        });
+            
+            io.sockets.emit(
+            	'update_teams', 
+            	{ 
+            		teams: teams, 
+            		redirect: (teams.firstTeam.players.length == 2 && teams.secondTeam.players.length == 2) ? true : false 
+	        	});
+	        });
 
         socket.on('goal', function(data){
-        	teams.every(function(team){
+        	_.each(teams, function(team){
         		if(team.players.indexOf(data.name) !== -1) {
         			team.score += 1;
         		}
-
-        		return true;
         	});
         	
         	io.sockets.emit('scoreChanged', teams);
