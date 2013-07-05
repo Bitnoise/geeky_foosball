@@ -1,4 +1,3 @@
-
 (function($){
     function shuffle(o){ //v1.0
         for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
@@ -6,16 +5,12 @@
     }
 
     $(document).ready(function() {
-
-
-        var players    = $('#players');
-
-        var socket = io.connect('http://localhost:1337');
-
-        var teams = {
-            firstTeam: $('ul#firstTeam'),
-            secondTeam: $('ul#secondTeam')
-        }
+        var players     = $('#players')
+            , socket    = io.connect('http://localhost:1337')
+            , teams     = {
+                firstTeam: $('ul#firstTeam'),
+                secondTeam: $('ul#secondTeam')
+            };
 
         //update list
         socket.on('update_teams', function(data) {

@@ -1,7 +1,7 @@
 /* mociek */
 var teams  = {
-    'firstTeam': [],
-    'secondTeam': []
+    'firstTeam': {players: [], score: 0},
+    'secondTeam': {players: [], score: 0}
 };
 
 var players = [
@@ -50,7 +50,11 @@ var io = require('socket.io').listen(socketServer);
     io.sockets.on('connection', function (socket) {
         socket.on('choose_player', function (data) {
             if(!_.isUndefined(teams[data.team])) {
-                teams.firstTeam.push(data.name);
+                //add user to the team
+                console.log(_.indexOf(teams[data.team], data.name));
+                if (_.indexOf(teams[data.team], data.name) === -1) {
+                    teams[data.team].push(data.name);
+                }
             }
             // console.log('emituje update_teams');
             io.sockets.emit('update_teams', { teams: teams });
